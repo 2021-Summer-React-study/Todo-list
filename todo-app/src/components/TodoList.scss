@@ -1,0 +1,6 @@
+.TodoList{
+    min-height: 320px;
+    max-height: 513px;
+    // y 축이 넘칠 때, 위 아래 내용이 넘칠 때
+    overflow-y:auto;
+}

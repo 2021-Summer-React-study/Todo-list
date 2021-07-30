@@ -10,25 +10,32 @@ import {
 import cn from 'classnames';
 import './TodoListItem.scss';
 
-const TodoListItem = ({ todo, onRemove, onToggle }) => {
+const TodoListItem = ({ todo, onRemove, onToggle, style }) => {
   const { id, text, checked } = todo;
+
   return (
-    <div className="TodoListItem">
-      {/* 조건부 스타일링 위해서 classnames 사용 */}
-      {/* classnames 는 true 인 값만 classname 으로 적용시켜주므로, */}
-      {/* checked 가 true면,  "checkbox checked" false면, "checkbox" 이렇게 적용됨. */}
-      <div className={cn('checkbox', { checked })} onClick={()=> onToggle(id)}>
-        {/* checked class 있으면 체크박스 엘리먼트 띄우고, 아니면 체크 안된 빈칸 띄우기 */}
-        {checked ? <MdCheckBox /> : <MdCheckBoxOutlineBlank />}
-        {/* 데이터 전체를 객체비구조화 할당으로 가져왔으니까 text 를 쓰면 App 에 적은 객체에서 text 만 가져오기 가능 */}
-        <div className="text">{text}</div>
-      </div>
-      <div className="remove" onClick={() => onRemove(id)}>
-        <MdRemoveCircleOutline />
+    <div className="TodoListItem-virtualized" style={style}>
+      <div className="TodoListItem">
+        {/* 조건부 스타일링 위해서 classnames 사용 */}
+        {/* classnames 는 true 인 값만 classname 으로 적용시켜주므로, */}
+        {/* checked 가 true면,  "checkbox checked" false면, "checkbox" 이렇게 적용됨. */}
+        <div
+          className={cn('checkbox', { checked })}
+          onClick={() => onToggle(id)}
+        >
+          {/* checked class 있으면 체크박스 엘리먼트 띄우고, 아니면 체크 안된 빈칸 띄우기 */}
+          {checked ? <MdCheckBox /> : <MdCheckBoxOutlineBlank />}
+          {/* 데이터 전체를 객체비구조화 할당으로 가져왔으니까 text 를 쓰면 App 에 적은 객체에서 text 만 가져오기 가능 */}
+          <div className="text">{text}</div>
+        </div>
+        <div className="remove" onClick={() => onRemove(id)}>
+          <MdRemoveCircleOutline />
+        </div>
       </div>
     </div>
   );
 };
 
-export default TodoListItem;
-
+export default React.memo(TodoListItem
+  // (prevProps,nextProps) => prevProps.todo === nextProps.todo,
+  );

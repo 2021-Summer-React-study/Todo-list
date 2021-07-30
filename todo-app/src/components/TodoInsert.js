@@ -21,8 +21,8 @@ const TodoInsert = ({ onInsert }) => {
       e.preventDefault();
     },
     // 함수 내부에서 state 값을 사용하고 있으므로, 어떤 값이 바뀔 때 함수를 새로 생성해야 한다. 지금 그 값들이 바로 onInsert,value
-    
-    [onInsert, value],
+
+  [onInsert, value],
   );
   return (
     <form className="TodoInsert" onSubmit={onSubmit}>

@@ -1,11 +1,20 @@
-.TodoListItem {
-  padding: 1rem;
-  display: flex;
-  align-items: center;
+.TodoListItem-virtualized{
+  // 엘리먼트가 겹치는 ( 사이사이에 ) border-top 설정
+   & + & {
+    border-top: 1px solid #dee2e6;
+  }
   // 자식 요소 중에 짝수번째 자식요소 설정
   &:nth-child(even) {
     background: #f8f9fa;
   }
+}
+
+
+.TodoListItem {
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  
 
   .checkbox {
     cursor: pointer;
@@ -43,9 +52,9 @@
       color: #ff8787;
     }
 
-    // 엘리먼트가 겹치는 ( 사이사이에 ) border-top 설정
-    & + & {
-      border-top: 1px solid #dee2e6;
-    }
+    
   }
+ 
 }
+
+

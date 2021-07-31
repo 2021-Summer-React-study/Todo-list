@@ -1,0 +1,22 @@
+.TodoTemplate {
+    width: 512px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 6rem;
+    border-radius: 4px;
+    overflow: hidden; // 부모 요소의 범위를 넘어가는 자식 요소의 부분은 보이지 않도록 처리
+
+    .app-title {
+        background: #22b8cf;
+        color: white;
+        height: 4rem;
+        font-size: 1.5rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .content {
+        background: white;
+    }
+}
